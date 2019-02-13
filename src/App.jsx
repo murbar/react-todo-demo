@@ -28,7 +28,9 @@ class App extends React.Component {
   };
 
   removeItem = itemId => {
-    console.log(itemId);
+    const items = [...this.state.items];
+    items.filter(i => i.id != itemId);
+    this.setState({ items });
   };
 
   addFormInputChange = e => {
