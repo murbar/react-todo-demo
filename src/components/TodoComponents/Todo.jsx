@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Todo = ({ item }) => {
+const Todo = ({ item, toggleCompleted }) => {
   return (
-    <div className="todolist-todo">
-      {item.completed ? '[X]' : '[ ]'} - {item.task}
+    <div className="todolist-todo" onClick={toggleCompleted}>
+      {item.completed ? '[×]' : '[ ]'} - {item.task}
     </div>
   );
 };
