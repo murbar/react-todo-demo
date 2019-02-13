@@ -10,11 +10,23 @@ class App extends React.Component {
     };
   }
 
+  toggleCompleted = itemId => {
+    const items = [...this.state.items];
+  };
+
+  removeItem = itemId => {
+    console.log(itemId);
+  };
+
+  addItem = item => {
+    console.log(item);
+  };
+
   render() {
     return (
       <div>
         <h1>Joel's Super Neat-o Todo App</h1>
-        <TodoList items={this.state.items} />
+        <TodoList items={this.state.items} toggleCompleted={this.toggleCompleted} />
       </div>
     );
   }
