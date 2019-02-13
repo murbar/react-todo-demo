@@ -53,15 +53,23 @@ class App extends React.Component {
     });
   };
 
+  clearCompleted = () => {
+    const items = [...this.state.items];
+    const newItems = items.filter(i => i.completed === false);
+
+    this.setState({ items: newItems });
+  };
+
   render() {
     return (
       <div className="todolist-container">
         <h1>Joel's Super Neat-o Todo App</h1>
         <TodoList items={this.state.items} toggleCompleted={this.toggleCompleted} />
         <TodoForm
-          submitForm={this.addItem}
-          changeInput={this.addFormInputChange}
           inputValue={this.state.newItemInputValue}
+          changeInput={this.addFormInputChange}
+          submitForm={this.addItem}
+          clearCompleted={this.clearCompleted}
         />
       </div>
     );
