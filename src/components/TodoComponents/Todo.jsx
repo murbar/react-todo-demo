@@ -3,9 +3,13 @@ import './Todo.css';
 
 const Todo = ({ item, toggleCompleted }) => {
   return (
-    <div className="todolist-todo" onClick={() => toggleCompleted(item.id)}>
-      {item.completed ? '[×]' : '[ ]'} - {item.task}
-    </div>
+    <li
+      className="todolist-todo"
+      onClick={() => toggleCompleted(item.id)}
+      data-completed={item.completed}
+    >
+      {item.task}
+    </li>
   );
 };
 

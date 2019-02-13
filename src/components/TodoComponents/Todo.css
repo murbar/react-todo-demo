@@ -1,0 +1,3 @@
+.todolist-todo[data-completed='true'] {
+  text-decoration: line-through;
+}
