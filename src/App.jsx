@@ -32,6 +32,11 @@ class App extends React.Component {
       <div>
         <h1>Joel's Super Neat-o Todo App</h1>
         <TodoList items={this.state.items} toggleCompleted={this.toggleCompleted} />
+        <TodoForm
+          submitForm={this.addItem}
+          changeInput={this.addFormInputChange}
+          inputValue={this.state.newItemInputValue}
+        />
       </div>
     );
   }
