@@ -12,6 +12,9 @@ class App extends React.Component {
 
   toggleCompleted = itemId => {
     const items = [...this.state.items];
+    const i = items.findIndex(i => i.id === itemId);
+    items[i].completed = !items[i].completed;
+    this.setState({ items });
   };
 
   removeItem = itemId => {
