@@ -40,8 +40,13 @@ class App extends React.Component {
 
   addItem = e => {
     e.preventDefault();
+
+    const newItem = this.state.newItemInputValue;
+
+    if (!newItem) return;
+
     const items = [...this.state.items];
-    items.push(makeItem(this.state.newItemInputValue));
+    items.push(makeItem(newItem));
     this.setState({
       items,
       newItemInputValue: ''
