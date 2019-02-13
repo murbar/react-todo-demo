@@ -7,7 +7,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
+        <h1>Joel's Super Neat-o Todo App</h1>
       </div>
     );
   }
