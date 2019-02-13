@@ -1,3 +1,12 @@
+.todolist-list {
+  padding: 0;
+}
+.todolist-todo {
+  list-style: none;
+  font-size: 1.25rem;
+  padding: 0 0 0.5rem;
+}
 .todolist-todo[data-completed='true'] {
   text-decoration: line-through;
+  color: #bbb;
 }

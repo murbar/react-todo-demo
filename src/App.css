@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+.todolist-container {
+  max-width: 30rem;
+  border: 1px solid gray;
+  margin: 3rem auto 0;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+}
