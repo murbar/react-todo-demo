@@ -1,6 +1,8 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 import getDummyData from './dummyData';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
