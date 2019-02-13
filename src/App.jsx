@@ -4,6 +4,14 @@ import TodoForm from './components/TodoComponents/TodoForm';
 import getDummyData from './dummyData';
 import './App.css';
 
+function makeItem(task) {
+  return {
+    task,
+    id: Date.now(),
+    completed: false
+  };
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
