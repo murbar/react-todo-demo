@@ -31,8 +31,18 @@ class App extends React.Component {
     console.log(itemId);
   };
 
-  addItem = item => {
-    console.log(item);
+  addFormInputChange = e => {
+    this.setState({ newItemInputValue: e.target.value });
+  };
+
+  addItem = e => {
+    e.preventDefault();
+    const items = [...this.state.items];
+    items.push(makeItem(this.state.newItemInputValue));
+    this.setState({
+      items,
+      newItemInputValue: ''
+    });
   };
 
   render() {
