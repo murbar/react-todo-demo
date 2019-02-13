@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Joel's Super Neat-o Todo App</h1>
-        <TodoList />
+        <TodoList items={this.state.items} />
       </div>
     );
   }
