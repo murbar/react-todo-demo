@@ -4,7 +4,7 @@ import './Todo.css';
 
 const TodoList = ({ items, toggleCompleted }) => {
   return (
-    <ul className="todolist-container">
+    <ul className="todolist-list">
       {items.map(item => (
         <Todo item={item} key={item.id} toggleCompleted={toggleCompleted} />
       ))}
