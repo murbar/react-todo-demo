@@ -11,7 +11,8 @@ class App extends React.Component {
     const initialData = this.initLocalStorage();
     this.state = {
       items: [...initialData],
-      newItemInputValue: ''
+      newItemInputValue: '',
+      showCompleted: true
     };
   }
 
@@ -71,22 +72,32 @@ class App extends React.Component {
     });
   };
 
-  clearCompleted = () => {
-    const items = [...this.state.items];
-    const newItems = items.filter(i => i.completed === false);
-    this.setState({ items: newItems });
+  // clearCompleted = () => {
+  //   const items = [...this.state.items];
+  //   const newItems = items.filter(i => i.completed === false);
+  //   this.setState({ items: newItems });
+  // };
+
+  showCompleted = () => {
+    let show = this.state.showCompleted;
+    this.setState({ showCompleted: !show });
   };
 
   render() {
     return (
       <div className="todolist-container">
         <h1>To-do List</h1>
-        <TodoList items={this.state.items} toggleCompleted={this.toggleCompleted} />
         <TodoForm
           inputValue={this.state.newItemInputValue}
           changeInput={this.addFormInputChange}
           submitForm={this.addItem}
-          clearCompleted={this.clearCompleted}
+          toggleShowCompleted={this.showCompleted}
+          showCompleted={this.state.showCompleted}
+        />
+        <TodoList
+          items={this.state.items}
+          toggleCompleted={this.toggleCompleted}
+          showCompleted={this.state.showCompleted}
         />
       </div>
     );
