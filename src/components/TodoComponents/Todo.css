@@ -1,12 +1,19 @@
-.todolist-list {
-  padding: 0;
-}
 .todolist-todo {
   list-style: none;
   font-size: 1.25rem;
-  padding: 0 0 0.5rem;
+  padding: 0.5rem;
+  position: relative;
 }
 .todolist-todo[data-completed='true'] {
-  text-decoration: line-through;
-  color: #bbb;
+  /* text-decoration: line-through; */
+  color: rgba(0, 0, 0, 0.25);
+}
+.todolist-todo[data-completed='true']::after {
+  content: '';
+  position: absolute;
+  background: rgba(0, 0, 0, 0.15);
+  height: 0.15rem;
+  width: 100%;
+  left: 0;
+  top: 50%;
 }

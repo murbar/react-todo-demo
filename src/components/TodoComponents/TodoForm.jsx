@@ -1,5 +1,5 @@
 import React from 'react';
-import './Todo.css';
+import './TodoForm.css';
 
 const TodoForm = ({ inputValue, changeInput, submitForm, clearCompleted }) => {
   return (
