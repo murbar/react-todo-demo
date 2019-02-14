@@ -35,7 +35,7 @@ class App extends React.Component {
     this.persistLocalStorage();
   }
 
-  toggleCompleted = itemId => {
+  toggleItemCompleted = itemId => {
     const items = [...this.state.items];
     const i = items.findIndex(i => i.id === itemId);
     items[i].completed = !items[i].completed;
@@ -91,7 +91,7 @@ class App extends React.Component {
         <TodoForm submitForm={this.addItem} />
         <TodoList
           items={this.state.items}
-          toggleCompleted={this.toggleCompleted}
+          toggleItemCompleted={this.toggleItemCompleted}
           showCompleted={this.state.showCompleted}
           removeItem={this.removeItem}
         />
