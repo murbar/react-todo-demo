@@ -2,22 +2,22 @@ const getInitialData = () => {
   return {
     items: [
       {
-        task: 'Organize garage',
+        task: 'Get into Lambda School',
         id: 1528817077286,
-        completed: false
+        completed: true
       },
       {
-        task: 'Call Mom',
+        task: 'Learn React in 3 days',
         id: 1528817077223,
-        completed: false
+        completed: true
       },
       {
-        task: 'Plan vacation',
+        task: 'Build to-do app',
         id: 1528817077255,
         completed: true
       },
       {
-        task: 'Bake cookies',
+        task: 'Get hired',
         id: 1528817084358,
         completed: false
       }
