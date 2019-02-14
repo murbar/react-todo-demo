@@ -4,7 +4,18 @@ import TodoForm from './components/TodoComponents/TodoForm';
 import getDummyData from './dummyData';
 import './App.css';
 
-function makeItem(task) {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.appLocalStorageKey = 'todoListAppTasks';
+    const initialData = this.initLocalStorage();
+    this.state = {
+      items: [...initialData],
+      newItemInputValue: ''
+    };
+  }
+
+  createItem(task) {
   return {
     task,
     id: Date.now(),
