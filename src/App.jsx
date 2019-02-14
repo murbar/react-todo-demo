@@ -80,7 +80,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="todolist-container">
-        <h1>Joel's Super Neat-o Todo App</h1>
+        <h1>To-do List</h1>
         <TodoList items={this.state.items} toggleCompleted={this.toggleCompleted} />
         <TodoForm
           inputValue={this.state.newItemInputValue}
