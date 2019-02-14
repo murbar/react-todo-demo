@@ -2,6 +2,8 @@
 
 My first time using react was three days ago. I was able to bang out this little todo app from scratch in about 10 hours. I'm excited to see what I can build with a bit more experience working with the framework.
 
+[See it in action.](https://joels-react-todo-app.netlify.com/)
+
 ## Features
 
 - Add tasks
@@ -48,5 +50,6 @@ My first time using react was three days ago. I was able to bang out this little
 
 ## What I'll need to investigate further
 
-- React hooks
-- ...
+- Hooks
+- Ref forwarding
+- Uncontrolled components
