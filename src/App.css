@@ -6,7 +6,7 @@
 .todolist-container {
   max-width: 30rem;
   background: linear-gradient(125deg, #fefcea 0%, #eaddbb 100%);
-  margin: 3rem auto 0;
+  margin: 3rem auto;
   padding: 1.5rem 2rem 2rem;
   border-radius: 0.3rem;
   box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.15), 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.15);
