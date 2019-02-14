@@ -1,67 +1,52 @@
-# React-Todo
+# I made a to-do app
 
-- At this point you have become familiar with the DOM and have built out User Interfaces using HTML and CSS and some JavaScript using custom components. And you've even had some practice working with React at a basic level. Now we're going to start adding some functionality to that work-flow. It's one thing to be able to build UI components using react, but what about the interactivity of those components?
+My first time using react was three days ago. I was able to bang out this little todo app from scratch in about 10 hours. I'm excited to see what I can build with a bit more experience working with the framework.
 
-## Initializing the project.
+## Features
 
-- `Fork and clone` this project and cd into your cloned version.
-- `yarn install` will pull in all the node_modules you need.
-- `yarn start` will start a development server on your `http://localhost:3000`.
-  - If yarn asks you to select different port with some error message, just select `Y` and it will pull it up on port 3001. This simply means you have a development server up and running on that port already.
+- Add tasks
+- Remove tasks
+- Toggle tasks completed/uncompleted
+- Toggle visibility of completed tasks
+- Clean design
+- Smooth UI transitions
+- Data persistence via `localStorage`
 
-## Instructions
+## Possible enhancements
 
-- Your job is to write the components to complete the Todo List application.
-- Your todo list should be fully functional and you should design it however you'd like. Feel free to get creative here. I have supplied a gif for you to see what the MVP functionality is required to look like over the course of the two days.
+- Ability to reorder tasks
+- Filter tasks displayed with search input
+- Multiple task lists
+- Persist app data to server
 
-![Todo App MVP](todo.gif)
+## What I learned about React
 
-- Your todo data should be an array of objects that look a lot like this:
+- React is fun!
+- React makes building complex UIs relatively easy
+- UI components "react" to changes in their state
+  - No need to manually update the DOM each time application state changes
+  - React only updates the DOM where necessary to match application state
+  - This makes React fast
+- JSX is not as inelegant as I initially thought
+  - It's a friendly way to declare UI components, saving us from calls to `React.createElement()`
+  - We have the full power of JavaScript in our component "templates"
+- Each component can have its own `state` and handle its own events
+  - State is not mutated directly, we use `setState()`
+  - Calls to `setState()` are asynchronous, we can pass a callback for better control
+  - React's synthetic events give us better performance
+- We can compose many simple components into complex apps
+- Data is passed between components via `props`
+  - `props` are read-only
+- When two components need to share `state` we hoist it to the nearest common ancestor component
+  - Data flows down the component tree via `props`
+- Functional and class components are different
+  - Class components allow us to store/mutate state and tap component life cycle methods
+  - Functional components may be easier to reason about (no `this`!)
+  - Hooks are an exciting new addition to the framework that will allow functional components to fulfill the same role as class components
+- We can use controlled components for two-way data binding on form elements
+- Life cycle methods like allow us to run arbitrary code when state changes or when components are instantiated and destroyed
 
-```js
-[
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  }
-];
-```
+## What I'll need to investigate further
 
-- The `task` field is the todo title that will be shown to the user.
-- The `completed` field should default to `false` and will be the field that we toggle when we complete a todo.
-- The `id` field is a unique `Time Stamp` that will be assigned by `Date.now()`.
-
-#### Day 1 Challenges
-
-- **Don't focus on styling yet**. We want you to worry about function over form today.
-- Your todo list should display a list of todos, an input field, a submit button, and a clear all button.
-- Be sure to use the given files for building out these components.
-- `<App />` will hold all the data needed for this project. It will also be the container for your Todo Components.
-  - All of your application data will be stored here on `<App />`.
-  - All of your `handler` functions should live here on `<App />`.
-- `<TodoList />` receives your Todos array and iterates over the list generating a new `<Todo />` for each element in the array.
-- `<Todo />` is a component that takes in the `todo` data and displays the task to the screen.
-- `<TodoForm>` will hold your input field and your `Add Todo` and `Clear Completed` buttons.
-  - Your input field should take in user input, and allow a user to press `Enter` or click on the `Submit Button` to add a todo to your list.
-  - Once a todo is submitted, the Todo List should re-render and show the added todo.
-
-#### Day 2 Challenges
-
-- Add the functionality to toggle your todo's completed flag from `false` to `true`.
-  - Once a todo is completed, be sure to demonstrate to the user that the todo is completed by adding a line-through style property if the completed flag is true.
-- Add the ability to remove any todos that you have completed. `.filter` will be your best friend here. When a user clicks on the `Clear Completed` button call your handler function that will filter out any todos that have the completed flag toggled to `true`.
-- **Now is the time to style** Take your time to make this an app that you can be proud of.
-
-#### Stretch Problems
-
-- **Persist your data** in `window.localStorage()` hint: you may have to pass your data to a stringifier to get it to live inside the `localStorage()` of the browser. This will cause it to persist past the page refresh.
-
-- **Search Functionality** Add a input bar that allows you to search through your tasks and only show the ones that match the search input.
-
-- **Hosting** Create a [Netlify Account](https://www.netlify.com/) and follow the tutorial on how to host your shiny new todo app on the world wide web.
+- React hooks
+- ...
