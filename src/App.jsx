@@ -47,10 +47,11 @@ class App extends React.Component {
     this.setState({ items });
   };
 
-  removeItem = itemId => {
+  removeItem = (e, itemId) => {
+    e.stopPropagation();
     const items = [...this.state.items];
-    items.filter(i => i.id !== itemId);
-    this.setState({ items });
+    const newItems = items.filter(i => i.id !== itemId);
+    this.setState({ items: newItems });
   };
 
   addFormInputChange = e => {
@@ -84,6 +85,8 @@ class App extends React.Component {
   };
 
   render() {
+    const hiddenCount = this.state.items.filter(i => i.completed === true).length;
+    const taskPlural = hiddenCount === 1 ? 'task' : 'tasks';
     return (
       <div className="todolist-container">
         <button
@@ -107,7 +110,13 @@ class App extends React.Component {
           items={this.state.items}
           toggleCompleted={this.toggleCompleted}
           showCompleted={this.state.showCompleted}
+          removeItem={this.removeItem}
         />
+        {hiddenCount && !this.state.showCompleted && (
+          <div className="hidden-todos-count">
+            {hiddenCount} completed {taskPlural} hidden
+          </div>
+        )}
       </div>
     );
   }
