@@ -12,11 +12,21 @@ function makeItem(task) {
   };
 }
 
+function initStorage() {
+  const dataKey = 'todoListAppTasks';
+
+  if (!localStorage[dataKey]) {
+    localStorage.setItem(dataKey, JSON.stringify([...getDummyData()]));
+  }
+
+  return JSON.parse(localStorage.getItem(dataKey));
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [...getDummyData()]
+      items: [...initStorage()]
     };
   }
 
