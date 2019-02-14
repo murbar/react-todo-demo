@@ -1,4 +1,4 @@
-const getDummyData = () => {
+const getInitialData = () => {
   return [
     {
       task: 'Organize garage',
@@ -23,4 +23,4 @@ const getDummyData = () => {
   ];
 };
 
-export default getDummyData;
+export default getInitialData;

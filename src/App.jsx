@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
-import getDummyData from './dummyData';
+import getInitialData from './initialData';
 import './App.css';
 
 class App extends React.Component {
@@ -26,7 +26,7 @@ class App extends React.Component {
 
   initLocalStorage() {
     if (!localStorage[this.appLocalStorageKey]) {
-      localStorage.setItem(this.appLocalStorageKey, JSON.stringify(getDummyData()));
+      localStorage.setItem(this.appLocalStorageKey, JSON.stringify(getInitialData()));
     }
 
     return JSON.parse(localStorage.getItem(this.appLocalStorageKey));
@@ -87,6 +87,8 @@ class App extends React.Component {
   render() {
     const hiddenCount = this.state.items.filter(i => i.completed === true).length;
     const taskPlural = hiddenCount === 1 ? 'task' : 'tasks';
+    const showHiddenTodosStatus = hiddenCount > 0 && !this.state.showCompleted;
+
     return (
       <div className="todolist-container">
         <button
@@ -112,7 +114,7 @@ class App extends React.Component {
           showCompleted={this.state.showCompleted}
           removeItem={this.removeItem}
         />
-        {hiddenCount && !this.state.showCompleted && (
+        {showHiddenTodosStatus && (
           <div className="hidden-todos-count">
             {hiddenCount} completed {taskPlural} hidden
           </div>
