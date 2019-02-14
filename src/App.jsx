@@ -16,29 +16,27 @@ class App extends React.Component {
   }
 
   createItem(task) {
-  return {
-    task,
-    id: Date.now(),
-    completed: false
-  };
-}
-
-function initStorage() {
-  const dataKey = 'todoListAppTasks';
-
-  if (!localStorage[dataKey]) {
-    localStorage.setItem(dataKey, JSON.stringify([...getDummyData()]));
+    return {
+      task,
+      id: Date.now(),
+      completed: false
+    };
   }
 
-  return JSON.parse(localStorage.getItem(dataKey));
-}
+  initLocalStorage() {
+    if (!localStorage[this.appLocalStorageKey]) {
+      localStorage.setItem(this.appLocalStorageKey, JSON.stringify(getDummyData()));
+    }
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [...initStorage()]
-    };
+    return JSON.parse(localStorage.getItem(this.appLocalStorageKey));
+  }
+
+  persistLocalStorage() {
+    localStorage.setItem(this.appLocalStorageKey, JSON.stringify(this.state.items));
+  }
+
+  componentDidUpdate() {
+    this.persistLocalStorage();
   }
 
   toggleCompleted = itemId => {
