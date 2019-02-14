@@ -64,7 +64,7 @@ class App extends React.Component {
     if (!newItem) return;
 
     const items = [...this.state.items];
-    items.push(this.createItem(newItem));
+    items.unshift(this.createItem(newItem));
     this.setState({
       items,
       newItemInputValue: ''
