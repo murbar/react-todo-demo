@@ -8,12 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.appLocalStorageKey = 'todoListAppTasks';
-    const initialData = this.initLocalStorage();
-    this.state = {
-      items: [...initialData],
-      newItemInputValue: '',
-      showCompleted: true
-    };
+    this.state = this.initLocalStorage();
   }
 
   createItem(task) {
@@ -33,7 +28,7 @@ class App extends React.Component {
   }
 
   persistLocalStorage() {
-    localStorage.setItem(this.appLocalStorageKey, JSON.stringify(this.state.items));
+    localStorage.setItem(this.appLocalStorageKey, JSON.stringify(this.state));
   }
 
   componentDidUpdate() {
