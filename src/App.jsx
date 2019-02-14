@@ -39,7 +39,7 @@ class App extends React.Component {
 
   removeItem = itemId => {
     const items = [...this.state.items];
-    items.filter(i => i.id != itemId);
+    items.filter(i => i.id !== itemId);
     this.setState({ items });
   };
 
