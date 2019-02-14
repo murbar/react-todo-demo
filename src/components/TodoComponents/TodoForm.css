@@ -24,11 +24,11 @@
 }
 
 .new-todo-input button {
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   position: absolute;
   right: 0.5rem;
   background: none;
-  top: calc(50% - 1rem);
+  top: calc(50% - 0.9rem);
   opacity: 0.6;
 }
