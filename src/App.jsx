@@ -78,7 +78,7 @@ class App extends React.Component {
   //   this.setState({ items: newItems });
   // };
 
-  showCompleted = () => {
+  toggleShowCompletedTasks = () => {
     let show = this.state.showCompleted;
     this.setState({ showCompleted: !show });
   };
@@ -86,13 +86,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="todolist-container">
+        <button
+          className="control-button show-hide"
+          type="button"
+          title="Show/Hide Completed Tasks"
+          onClick={this.toggleShowCompletedTasks}
+        >
+          <img
+            src={this.state.showCompleted ? '/icons/eye-off.svg' : '/icons/eye.svg'}
+            alt="Show/Hide icon"
+          />
+        </button>
         <h1>To-do List</h1>
         <TodoForm
           inputValue={this.state.newItemInputValue}
           changeInput={this.addFormInputChange}
           submitForm={this.addItem}
-          toggleShowCompleted={this.showCompleted}
-          showCompleted={this.state.showCompleted}
         />
         <TodoList
           items={this.state.items}
