@@ -4,10 +4,18 @@
   padding: 0.5rem 0.5rem 0.5rem 3rem;
   height: 2.5rem;
   position: relative;
+  transition: all 200ms;
 }
 
 .todolist-todo[data-completed='true'] {
   color: rgba(0, 0, 0, 0.25);
+}
+
+.todolist-list[data-show-completed='false'] li[data-completed='true'] {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .todolist-todo > img {
