@@ -83,13 +83,14 @@ class App extends React.Component {
     const hiddenCount = this.state.items.filter(i => i.completed === true).length;
     const taskPlural = hiddenCount === 1 ? 'task' : 'tasks';
     const showHiddenTodosStatus = hiddenCount > 0 && !this.state.showCompleted;
+    const showHideButtonToolTip = this.state.showCompleted ? 'Hide' : 'Show';
 
     return (
       <div className="todolist-container">
         <button
           className="control-button show-hide"
           type="button"
-          title="Show/Hide Completed Tasks"
+          title={showHideButtonToolTip + ' completed tasks'}
           onClick={this.toggleShowCompletedTasks}
         >
           <img
