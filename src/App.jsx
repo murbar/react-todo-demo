@@ -49,22 +49,11 @@ class App extends React.Component {
     this.setState({ items: newItems });
   };
 
-  addFormInputChange = e => {
-    this.setState({ newItemInputValue: e.target.value });
-  };
-
-  addItem = e => {
-    e.preventDefault();
-
-    const newItem = this.state.newItemInputValue;
-
-    if (!newItem) return;
-
+  addItem = newItem => {
     const items = [...this.state.items];
     items.unshift(this.createItem(newItem));
     this.setState({
-      items,
-      newItemInputValue: ''
+      items
     });
   };
 
@@ -99,11 +88,7 @@ class App extends React.Component {
           />
         </button>
         <h1>To-do List</h1>
-        <TodoForm
-          inputValue={this.state.newItemInputValue}
-          changeInput={this.addFormInputChange}
-          submitForm={this.addItem}
-        />
+        <TodoForm submitForm={this.addItem} />
         <TodoList
           items={this.state.items}
           toggleCompleted={this.toggleCompleted}

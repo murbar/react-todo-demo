@@ -22,7 +22,6 @@ const getInitialData = () => {
         completed: false
       }
     ],
-    newItemInputValue: '',
     showCompleted: true
   };
 };
