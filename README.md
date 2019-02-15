@@ -44,7 +44,7 @@ My first time using react was three days ago. I was able to bang out this little
 - Functional and class components are different
   - Class components allow us to store/mutate state and tap component life cycle methods
   - Functional components may be easier to reason about (no `this`!)
-  - Hooks are an exciting new addition to the framework that will allow functional components to fulfill the same role as class components
+  - Hooks are an exciting new addition to the framework that will allow functional components to fulfill the same role as class components with less and cleaner code
 - We can use controlled components for two-way data binding on form elements
 - Life cycle methods like allow us to run arbitrary code when state changes or when components are instantiated and destroyed
 
