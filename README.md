@@ -13,6 +13,7 @@ My first time using react was three days ago. I was able to bang out this little
 - Clean design
 - Smooth UI transitions
 - Data persistence via `localStorage`
+- UPDATED: Converted class components to function components utilizing hooks
 
 ## Possible enhancements
 
@@ -50,6 +51,6 @@ My first time using react was three days ago. I was able to bang out this little
 
 ## What I'll need to investigate further
 
-- Hooks
+- ~~Hooks~~
 - Ref forwarding
 - Uncontrolled components
