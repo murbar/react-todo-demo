@@ -1,4 +1,4 @@
-# I made a to-do app
+# I made a to-do app with React 🤘
 
 My first time using react was three days ago. I was able to bang out this little todo app from scratch in about 10 hours. I'm excited to see what I can build with a bit more experience working with the framework.
 
