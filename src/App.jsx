@@ -17,8 +17,8 @@ const App = props => {
     const deserializedState = JSON.parse(localStorage.getItem(appLocalStorageKey));
     return deserializedState;
   };
-  const initialState = initLocalStorage();
 
+  const initialState = initLocalStorage();
   const [items, setItems] = useState(initialState.items);
   const [showCompleted, setShowCompleted] = useState(initialState.showCompleted);
 
