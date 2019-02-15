@@ -3,6 +3,7 @@ import './Todo.css';
 
 const Todo = ({ item, toggleCompleted, remove }) => {
   const iconSrc = item.completed ? '/icons/check-circle.svg' : '/icons/circle.svg';
+
   return (
     <li
       className="todolist-todo"
