@@ -1,6 +1,8 @@
 import React from 'react';
-import TodoList from './components/TodoComponents/TodoList';
-import TodoForm from './components/TodoComponents/TodoForm';
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+import TodoListStatus from './components/TodoListStatus';
+import ToggleHiddenButton from './components/ToggleHiddenButton';
 import getInitialData from './initialData';
 import './App.css';
 
@@ -62,24 +64,14 @@ class App extends React.Component {
 
   render() {
     const hiddenCount = this.state.items.filter(i => i.completed === true).length;
-    const taskPlural = hiddenCount === 1 ? 'task' : 'tasks';
-    const showHiddenTodosStatus = hiddenCount > 0 && !this.state.showCompleted;
-    const showHideButtonToolTip = this.state.showCompleted ? 'Hide' : 'Show';
 
     return (
       <div className="todolist-container">
-        <button
-          className="control-button show-hide"
-          type="button"
-          title={showHideButtonToolTip + ' completed tasks'}
-          onClick={this.toggleShowCompletedTasks}
-        >
-          <img
-            src={this.state.showCompleted ? '/icons/eye-off.svg' : '/icons/eye.svg'}
-            alt="Show/Hide icon"
-          />
-        </button>
         <h1>To-do List</h1>
+        <ToggleHiddenButton
+          showCompleted={this.state.showCompleted}
+          onToggle={this.toggleShowCompletedTasks}
+        />
         <TodoForm submitForm={this.addItem} />
         <TodoList
           items={this.state.items}
@@ -87,11 +79,7 @@ class App extends React.Component {
           showCompleted={this.state.showCompleted}
           removeItem={this.removeItem}
         />
-        {showHiddenTodosStatus && (
-          <div className="hidden-todos-count">
-            {hiddenCount} completed {taskPlural} hidden
-          </div>
-        )}
+        <TodoListStatus showHidden={this.state.showCompleted} hiddenCount={hiddenCount} />
       </div>
     );
   }
