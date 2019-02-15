@@ -50,10 +50,8 @@ class App extends React.Component {
   };
 
   addItem = newItem => {
-    const items = [...this.state.items];
-    items.unshift(this.createItem(newItem));
     this.setState({
-      items
+      items: [this.createItem(newItem), ...this.state.items]
     });
   };
 
