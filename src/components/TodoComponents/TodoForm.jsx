@@ -1,48 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TodoForm.css';
 
-class TodoForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: ''
-    };
-  }
+const TodoForm = ({ submitForm }) => {
+  const [inputValue, setInputValue] = useState('');
 
-  changeInput = e => {
-    this.setState({ inputValue: e.target.value });
+  const changeInput = e => {
+    setInputValue(e.target.value);
   };
 
-  addItem = e => {
+  const addItem = e => {
     e.preventDefault();
-
-    if (!this.state.inputValue) return;
-
-    this.props.submitForm(this.state.inputValue);
-    this.setState({ inputValue: '' });
+    if (!inputValue) return;
+    submitForm(inputValue);
+    setInputValue('');
   };
 
-  render() {
-    return (
-      <div className="todolist-form">
-        <form onSubmit={this.addItem}>
-          <div className="new-todo-input">
-            <input
-              type="text"
-              placeholder="New to-do..."
-              value={this.state.inputValue}
-              onChange={this.changeInput}
-            />
-            {this.state.inputValue && (
-              <button type="submit" title="Add New Task" className="control-button">
-                <img src="/icons/plus-circle.svg" alt="Add icon" />
-              </button>
-            )}
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="todolist-form">
+      <form onSubmit={addItem}>
+        <div className="new-todo-input">
+          <input type="text" placeholder="New to-do..." value={inputValue} onChange={changeInput} />
+          {inputValue && (
+            <button type="submit" title="Add New Task" className="control-button">
+              <img src="/icons/plus-circle.svg" alt="Add icon" />
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
+  );
+};
 
 export default TodoForm;
