@@ -63,12 +63,16 @@ const App = props => {
     setShowCompleted(!showCompleted);
   };
 
-  const hiddenCount = items.filter(i => i.completed === true).length;
+  const completedCount = items.filter(i => i.completed === true).length;
 
   return (
     <div className="todolist-container">
       <h1>To-do List</h1>
-      <ToggleHiddenButton showCompleted={showCompleted} onToggle={toggleShowCompletedTasks} />
+      <ToggleHiddenButton
+        showCompleted={showCompleted}
+        onToggle={toggleShowCompletedTasks}
+        completedCount={completedCount}
+      />
       <TodoForm submitForm={addItem} />
       <TodoList
         items={items}
@@ -76,7 +80,7 @@ const App = props => {
         showCompleted={showCompleted}
         removeItem={removeItem}
       />
-      <TodoListStatus showHidden={showCompleted} hiddenCount={hiddenCount} />
+      <TodoListStatus showHidden={showCompleted} completedCount={completedCount} />
     </div>
   );
 };
