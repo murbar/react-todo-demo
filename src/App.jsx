@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = this.initLocalStorage();
   }
 
-  createItem(task) {
+  createItemObject(task) {
     return {
       task,
       id: Date.now(),
@@ -51,15 +51,9 @@ class App extends React.Component {
 
   addItem = newItem => {
     this.setState({
-      items: [this.createItem(newItem), ...this.state.items]
+      items: [this.createItemObject(newItem), ...this.state.items]
     });
   };
-
-  // clearCompleted = () => {
-  //   const items = [...this.state.items];
-  //   const newItems = items.filter(i => i.completed === false);
-  //   this.setState({ items: newItems });
-  // };
 
   toggleShowCompletedTasks = () => {
     let show = this.state.showCompleted;
