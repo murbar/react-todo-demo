@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import TodoListStatus from './components/TodoListStatus';
@@ -6,83 +6,79 @@ import ToggleHiddenButton from './components/ToggleHiddenButton';
 import getInitialData from './initialData';
 import './App.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.appLocalStorageKey = 'todoListAppTasks';
-    this.state = this.initLocalStorage();
-  }
+const App = props => {
+  const appLocalStorageKey = 'todoListAppTasks';
+  const initLocalStorage = () => {
+    if (!localStorage[appLocalStorageKey]) {
+      const serializedState = JSON.stringify(getInitialData());
+      localStorage.setItem(appLocalStorageKey, serializedState);
+    }
 
-  createItemObject(task) {
+    const deserializedState = JSON.parse(localStorage.getItem(appLocalStorageKey));
+    return deserializedState;
+  };
+  const initialState = initLocalStorage();
+
+  const [items, setItems] = useState(initialState.items);
+  const [showCompleted, setShowCompleted] = useState(initialState.showCompleted);
+
+  useEffect(() => {
+    persistLocalStorage();
+  });
+
+  const createItemObject = task => {
     return {
       task,
       id: Date.now(),
       completed: false
     };
-  }
-
-  initLocalStorage() {
-    if (!localStorage[this.appLocalStorageKey]) {
-      localStorage.setItem(this.appLocalStorageKey, JSON.stringify(getInitialData()));
-    }
-
-    return JSON.parse(localStorage.getItem(this.appLocalStorageKey));
-  }
-
-  persistLocalStorage() {
-    localStorage.setItem(this.appLocalStorageKey, JSON.stringify(this.state));
-  }
-
-  componentDidUpdate() {
-    this.persistLocalStorage();
-  }
-
-  toggleItemCompleted = itemId => {
-    const items = [...this.state.items];
-    const i = items.findIndex(i => i.id === itemId);
-    items[i].completed = !items[i].completed;
-    this.setState({ items });
   };
 
-  removeItem = (e, itemId) => {
-    e.stopPropagation();
-    const items = [...this.state.items];
-    const newItems = items.filter(i => i.id !== itemId);
-    this.setState({ items: newItems });
-  };
-
-  addItem = newItem => {
-    this.setState({
-      items: [this.createItemObject(newItem), ...this.state.items]
+  const persistLocalStorage = () => {
+    const serializedState = JSON.stringify({
+      items,
+      showCompleted
     });
+    localStorage.setItem(appLocalStorageKey, serializedState);
   };
 
-  toggleShowCompletedTasks = () => {
-    let show = this.state.showCompleted;
-    this.setState({ showCompleted: !show });
+  const addItem = newItem => {
+    setItems([createItemObject(newItem), ...items]);
   };
 
-  render() {
-    const hiddenCount = this.state.items.filter(i => i.completed === true).length;
+  const removeItem = (e, itemId) => {
+    e.stopPropagation();
+    const updatedItems = items.filter(i => i.id !== itemId);
+    setItems(updatedItems);
+  };
 
-    return (
-      <div className="todolist-container">
-        <h1>To-do List</h1>
-        <ToggleHiddenButton
-          showCompleted={this.state.showCompleted}
-          onToggle={this.toggleShowCompletedTasks}
-        />
-        <TodoForm submitForm={this.addItem} />
-        <TodoList
-          items={this.state.items}
-          toggleItemCompleted={this.toggleItemCompleted}
-          showCompleted={this.state.showCompleted}
-          removeItem={this.removeItem}
-        />
-        <TodoListStatus showHidden={this.state.showCompleted} hiddenCount={hiddenCount} />
-      </div>
-    );
-  }
-}
+  const toggleItemCompleted = itemId => {
+    const updatedItems = [...items];
+    const i = updatedItems.findIndex(i => i.id === itemId);
+    updatedItems[i].completed = !updatedItems[i].completed;
+    setItems(updatedItems);
+  };
+
+  const toggleShowCompletedTasks = () => {
+    setShowCompleted(!showCompleted);
+  };
+
+  const hiddenCount = items.filter(i => i.completed === true).length;
+
+  return (
+    <div className="todolist-container">
+      <h1>To-do List</h1>
+      <ToggleHiddenButton showCompleted={showCompleted} onToggle={toggleShowCompletedTasks} />
+      <TodoForm submitForm={addItem} />
+      <TodoList
+        items={items}
+        toggleItemCompleted={toggleItemCompleted}
+        showCompleted={showCompleted}
+        removeItem={removeItem}
+      />
+      <TodoListStatus showHidden={showCompleted} hiddenCount={hiddenCount} />
+    </div>
+  );
+};
 
 export default App;
