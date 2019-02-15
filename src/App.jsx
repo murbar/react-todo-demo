@@ -1,8 +1,8 @@
 import React from 'react';
-import TodoList from './components/TodoComponents/TodoList';
-import TodoForm from './components/TodoComponents/TodoForm';
-import TodoListStatus from './components/TodoComponents/TodoListStatus';
-import ToggleHiddenButton from './components/TodoComponents/ToggleHiddenButton';
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+import TodoListStatus from './components/TodoListStatus';
+import ToggleHiddenButton from './components/ToggleHiddenButton';
 import getInitialData from './initialData';
 import './App.css';
 
