@@ -70,15 +70,15 @@ const App = props => {
       <h1>To-do List</h1>
       <ToggleHiddenButton
         showCompleted={showCompleted}
-        onToggle={toggleShowCompletedTasks}
         completedCount={completedCount}
+        onToggle={toggleShowCompletedTasks}
       />
-      <TodoForm submitForm={addItem} />
+      <TodoForm onSubmitForm={addItem} />
       <TodoList
         items={items}
-        toggleItemCompleted={toggleItemCompleted}
         showCompleted={showCompleted}
-        removeItem={removeItem}
+        onToggleItemCompleted={toggleItemCompleted}
+        onRemoveItem={removeItem}
       />
       <TodoListStatus showHidden={showCompleted} completedCount={completedCount} />
     </div>

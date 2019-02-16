@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TodoForm.css';
 
-const TodoForm = ({ submitForm }) => {
+const TodoForm = ({ onSubmitForm }) => {
   const [inputValue, setInputValue] = useState('');
 
   const changeInput = e => {
@@ -11,7 +11,7 @@ const TodoForm = ({ submitForm }) => {
   const addItem = e => {
     e.preventDefault();
     if (!inputValue) return;
-    submitForm(inputValue);
+    onSubmitForm(inputValue);
     setInputValue('');
   };
 
