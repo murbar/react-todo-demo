@@ -4,6 +4,11 @@ import './Todo.css';
 const Todo = ({ item, onToggleCompleted, onRemove }) => {
   const iconSrc = item.completed ? '/icons/check-circle.svg' : '/icons/circle.svg';
 
+  const onClick = e => {
+    e.stopPropagation();
+    onRemove(item.id);
+  };
+
   return (
     <li
       className="todolist-todo"
@@ -12,7 +17,7 @@ const Todo = ({ item, onToggleCompleted, onRemove }) => {
     >
       <img src={iconSrc} alt="Task icon" />
       {item.task}
-      <button className="control-button" title="Remove task" onClick={e => onRemove(e, item.id)}>
+      <button className="control-button" title="Remove task" onClick={onClick}>
         <img src="/icons/delete.svg" alt="Delete icon" />
       </button>
     </li>

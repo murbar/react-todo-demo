@@ -46,8 +46,7 @@ const App = props => {
     setItems([createItemObject(newItem), ...items]);
   };
 
-  const removeItem = (e, itemId) => {
-    e.stopPropagation();
+  const removeItem = itemId => {
     const updatedItems = items.filter(i => i.id !== itemId);
     setItems(updatedItems);
   };
